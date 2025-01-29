@@ -1,0 +1,88 @@
+<!DOCTYPE html> 
+<html> 
+  
+<head> 
+    <title>Calculator</title> 
+  
+    <link rel="stylesheet" href="main.css"> 
+</head> 
+  
+<body> 
+    <table class="Calculator"> 
+        <tr> 
+            <td colspan="3">  
+                <!-- colspan is usedfor present colums just as row span is used for roows -->
+                <input type="text" id="result"> 
+            </td> 
+            <td><input type="button" value="c"onclick="clearScreen()">C</td> 
+        </tr> 
+  
+        <tr class="button" id="display"> 
+            <td><input type="button" value="1" onclick="displayScreen(1)">1</td> 
+            <td><input type="button" value="2"onclick="displayScreen(2)">2</td> 
+            <td><input type="button" value="3"onclick="displayScreen(3)">3</td> 
+            <td><input type="button" value="/" onclick="setOperator('/')">/</td> 
+        </tr> 
+        <tr class="button" id="display"> 
+            <td><input type="button" value="4"onclick="displayScreen(4)">4</td> 
+            <td><input type="button" value="5" onclick="displayScreen(5)">5</td> 
+            <td><input type="button" value="6" onclick="displayScreen(6)">6</td> 
+            <td><input type="button" value="*"onclick="setOperator('*')">*</td> 
+        </tr> 
+        <tr  class="button" id="display"> 
+            <td><input type="button" value="7" onclick="displayScreen(7)">7</td> 
+            <td><input type="button" value="8" onclick="displayScreen(8)">8</td> 
+            <td><input type="button" value="9" onclick="displayScreen(9)">9</td> 
+            <td><input type="button" value="-" onclick="setOperator('-')">-</td> 
+        </tr> 
+        <tr class="button" id="display"> 
+            <td><input type="button" value="0" onclick="displayScreen(0)">0</td> 
+            <td><input type="button" value="."onclick="setOperator('.')">.</td> 
+            <td><input type="button" value="="onclick="setOperator('=')">=</td> 
+            <td><input type="button" value="+"onclick="setOperator('+')">+</td> 
+        </tr> 
+    </table> 
+    <script>
+        let show = document.getElementById("display");
+        let firstNum ;
+        let operator;
+        let secondNum;
+        let result;
+        function calculate(){
+            if (firstNum != "" && operator != "" && show.value != "") {
+                secondNum = parseFloat(show.value);
+                firstNum = parseFloat(firstNum);
+
+                if (operator == "+") {
+                    result = firstNum + secondNum;
+                }
+                else if (operator == "-") {
+                    result = firstNum - secondNum;
+                }
+                else if (operator == "*") {
+                    result = firstNum * secondNum;
+                }
+                else if (operator == "/") {
+                    result = firstNum / secondNum;
+                }
+
+                show.value = result;
+            }
+        }
+        if (show.value != "") {
+                firstNum = show.value;
+                operator = operation;
+                show.value = "";
+            }
+
+        function displayScreen(num) {
+            show.value += num;
+        }
+
+        function clearScreen() {
+            show.value = " ";
+        }
+    </script>
+</body> 
+  
+</html>  
